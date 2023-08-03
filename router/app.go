@@ -1,6 +1,7 @@
 package router
 
 import (
+	"gin-gorm/controller"
 	docs "gin-gorm/docs"
 	"gin-gorm/service"
 	"github.com/gin-gonic/gin"
@@ -17,6 +18,7 @@ func Router() *gin.Engine {
 	{
 		v1.GET("/ping", service.Ping)
 		v1.GET("/user", service.GetProblemList)
+		v1.POST("/user/login", controller.Login)
 	}
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 	return r
